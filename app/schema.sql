@@ -32,3 +32,5 @@ CREATE TABLE investor (
     user_bio TEXT NOT NULL,
     reason_for_applying TEXT NOT NULL,
 );
+
+-- . venv/bin/activate
