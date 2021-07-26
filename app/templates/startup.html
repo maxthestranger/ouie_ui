@@ -1,68 +1,44 @@
 {% extends 'base.html' %} {% block title %} Startup Application {% endblock %}
 {% block content %}
 
+<!-- Hero Start -->
+<section class="bg-home section" id="home" style="background-color: #263b5e">
+  <div class="home-overlay"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h1 class="home-title mt-3 text-white">Startup application</h1>
+
+        <p class="home-desc text-muted mt-3">
+          Make it easy for investors to learn about your project
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Hero End -->
+
 <section class="section" id="contact">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="title-box text-center">
-          <h6 class="title-sub-title mb-0 text-primary">
-            Start with the basics
-          </h6>
-          <h3 class="title-heading mt-3">
-            Make it easy for inestors to learn about your project.
-          </h3>
+          <h3 class="title-heading mt-3">Start with the basics</h3>
+          <p>Fill in the necessary fields <span class="text-danger">*</span></p>
         </div>
       </div>
     </div>
 
-    <div class="row align-items-center mt-5 pt-2">
-      <div class="col-lg-5">
-        <div class="mt-4">
-          <h3>Let's talk about everything!</h3>
-          <p class="text-muted mt-2">
-            Don't like forms? Send us an
-            <a href="mailto:ideaskenya@gmail.com" class="text-primary fw-normal"
-              ><u>Email</u></a
-            >
-          </p>
-
-          <div class="mt-4 pt-1 w-75">
-            <div class="d-flex mt-3">
-              <i class="mdi mdi-map-marker text-primary f-20"></i>
-              <div class="flex-1 ps-3">
-                <p class="text-muted mb-0">
-                  La Colline Gardens, Kilimani, Masaba Rd, Nairobi
-                </p>
-              </div>
-            </div>
-
-            <div class="d-flex mt-3">
-              <i class="mdi mdi-phone text-primary f-20"></i>
-              <div class="flex-1 ps-3">
-                <p class="text-muted mb-0">+254 700 001 806</p>
-              </div>
-            </div>
-
-            <div class="d-flex mt-3">
-              <i class="mdi mdi-email text-primary f-20"></i>
-              <div class="flex-1 ps-3">
-                <p class="text-muted mb-0">ideaskenya@gmail.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-7">
+    <div class="row justify-content-center mt-5 pt-2">
+      <div class="col-lg-6">
         <div class="custom-form">
           <form method="post" name="myForm" onsubmit="return validateForm()">
             <p id="error-msg"></p>
             <div id="simple-msg"></div>
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 <div class="mb-2 mt-2">
-                  <label class="form-label text-muted">Your Name</label>
+                  <label class="form-label text-muted">Startup Name</label>
                   <input
                     name="name"
                     id="name"
@@ -71,13 +47,227 @@
                   />
                 </div>
               </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted">Web address</label>
+                  <input
+                    name="url"
+                    id="url"
+                    type="url"
+                    class="form-control"
+                    placeholder="https://"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Picth your startup in 140 characters</label
+                  >
+                  <textarea
+                    name="pitch"
+                    id="pitch"
+                    rows="5"
+                    class="form-control"
+                    maxlength="140"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Stage of your startup</label
+                  >
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="stage"
+                        id="idea"
+                        value="idea"
+                      />
+                      <label class="form-check-label text-muted" for="idea"
+                        >Idea</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="stage"
+                        id="prototype"
+                        value="prototype"
+                      />
+                      <label class="form-check-label text-muted" for="prototype"
+                        >Prototype</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="stage"
+                        id="users"
+                        value="users"
+                      />
+                      <label class="form-check-label text-muted" for="users"
+                        >Users</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="stage"
+                        id="payingUsers"
+                        value="payingUsers"
+                      />
+                      <label
+                        class="form-check-label text-muted"
+                        for="payingUsers"
+                        >Paying Users</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-lg-6">
                 <div class="mb-2 mt-2">
-                  <label class="form-label text-muted">Your Email</label>
+                  <label class="form-label text-muted"
+                    >When did you start</label
+                  >
+                  <select class="form-select" aria-label="Month select">
+                    <option selected>Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-white"
+                    >When did you start</label
+                  >
+                  <select class="form-select" aria-label="Year select">
+                    <option selected>Year</option>
+                    <option value="1">2021</option>
+                    <option value="2">2020</option>
+                    <option value="3">2019</option>
+                    <option value="4">2018</option>
+                    <option value="5">2017</option>
+                    <option value="6">2016</option>
+                    <option value="7">2015</option>
+                    <option value="8">2014</option>
+                    <option value="9">2013</option>
+                    <option value="10">2012</option>
+                    <option value="11">2011</option>
+                    <option value="12">2010</option>
+                    <option value="12">2009</option>
+                    <option value="12">2008</option>
+                    <option value="12">2007</option>
+                    <option value="12">2006</option>
+                    <option value="12">2005</option>
+                    <option value="12">2004</option>
+                    <option value="12">2003</option>
+                    <option value="12">2002</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Are you incoporated?</label
+                  >
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="incoporated"
+                        id="yes"
+                        value="yes"
+                      />
+                      <label class="form-check-label text-muted" for="idea"
+                        >Yes</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="incoporated"
+                        id="no"
+                        value="no"
+                      />
+                      <label class="form-check-label text-muted" for="prototype"
+                        >No</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted">County</label>
+                  <select class="form-select" aria-label="Year select">
+                    <option selected>County</option>
+                    <option value="1">Nairobi</option>
+                    <option value="2">Mombasa</option>
+                    <option value="3">2019</option>
+                    <option value="4">2018</option>
+                    <option value="5">2017</option>
+                    <option value="6">2016</option>
+                    <option value="7">2015</option>
+                    <option value="8">2014</option>
+                    <option value="9">2013</option>
+                    <option value="10">2012</option>
+                    <option value="11">2011</option>
+                    <option value="12">2010</option>
+                    <option value="12">2009</option>
+                    <option value="12">2008</option>
+                    <option value="12">2007</option>
+                    <option value="12">2006</option>
+                    <option value="12">2005</option>
+                    <option value="12">2004</option>
+                    <option value="12">2003</option>
+                    <option value="12">2002</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >What is your title at the startup</label
+                  >
                   <input
-                    name="email"
-                    id="email"
-                    type="email"
+                    name="title"
+                    id="title"
+                    type="text"
                     class="form-control"
                   />
                 </div>
@@ -86,18 +276,91 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
-                  <label class="form-label text-muted">Your Subject</label>
-                  <input type="text" class="form-control" id="subject" />
+                  <label class="form-label text-muted"
+                    >What is your role at the startup</label
+                  >
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="role"
+                        id="co_founder"
+                        value="co_founder"
+                      />
+                      <label
+                        class="form-check-label text-muted"
+                        for="co_founder"
+                        >Co-founder</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="role"
+                        id="founder"
+                        value="founder"
+                      />
+                      <label class="form-check-label text-muted" for="founder"
+                        >Founder</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="role"
+                        id="employee"
+                        value="employee"
+                      />
+                      <label class="form-check-label text-muted" for="employee"
+                        >Employee</label
+                      >
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
-                  <label class="form-label text-muted">Your Massage</label>
+                  <label class="form-label text-muted"
+                    >Short bio / Describe yourself</label
+                  >
                   <textarea
-                    name="comments"
-                    id="comments"
+                    name="bio"
+                    id="bio"
+                    rows="5"
+                    class="form-control"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Startup Elevator Pitch</label
+                  >
+                  <textarea
+                    name="epitch"
+                    id="epitch"
+                    rows="5"
+                    class="form-control"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Why do you want to attend this program?</label
+                  >
+                  <textarea
+                    name="reason"
+                    id="reason"
                     rows="5"
                     class="form-control"
                   ></textarea>
@@ -111,7 +374,7 @@
                   id="submit"
                   name="send"
                   class="submitBnt btn btn-primary"
-                  value="Send Message"
+                  value="Let's Go"
                 />
               </div>
             </div>
