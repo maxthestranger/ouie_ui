@@ -32,7 +32,7 @@
     <div class="row justify-content-center mt-5 pt-2">
       <div class="col-lg-6">
         <div class="custom-form">
-          <form method="post" name="myForm" onsubmit="return validateForm()">
+          <form method="POST" name="myForm" action="/startup">
             <p id="error-msg"></p>
             <div id="simple-msg"></div>
             <div class="row">
@@ -40,8 +40,8 @@
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted">Startup Name</label>
                   <input
-                    name="name"
-                    id="name"
+                    name="startup_name"
+                    id="startup_name"
                     type="text"
                     class="form-control"
                   />
@@ -146,7 +146,7 @@
                     >When did you start</label
                   >
                   <select class="form-select" aria-label="Month select">
-                    <option selected>Month</option>
+                    <option selected disabled>Month</option>
                     <option value="1">January</option>
                     <option value="2">February</option>
                     <option value="3">March</option>
@@ -168,7 +168,7 @@
                     >When did you start</label
                   >
                   <select class="form-select" aria-label="Year select">
-                    <option selected>Year</option>
+                    <option selected disabled>Year</option>
                     <option value="1">2021</option>
                     <option value="2">2020</option>
                     <option value="3">2019</option>
@@ -233,7 +233,7 @@
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted">County</label>
                   <select class="form-select" aria-label="Year select">
-                    <option selected>County</option>
+                    <option selected disabled>County</option>
                     <option value="1">Nairobi</option>
                     <option value="2">Mombasa</option>
                     <option value="3">2019</option>
@@ -319,6 +319,76 @@
                       >
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >First Name</label
+                  >
+                  <input
+                    name="fname"
+                    id="fname"
+                    type="text"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Last Name</label
+                  >
+                  <input
+                    name="title"
+                    id="lname"
+                    type="lname"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Your contact email</label
+                  >
+                  <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted"
+                    >Your contact phone number</label
+                  >
+                  <input
+                    name="phone"
+                    id="phone"
+                    type="tel"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mb-2 mt-2">
+                  <label class="form-label text-muted">Linkedin</label>
+                  <input
+                    name="linkedin"
+                    id="linkedin"
+                    type="url"
+                    class="form-control"
+                    placeholder="https://www.linkedin.com/in/yourusername/"
+                  />
                 </div>
               </div>
             </div>
