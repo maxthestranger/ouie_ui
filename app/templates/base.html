@@ -25,15 +25,15 @@
     />
     <link href="../static/css/style.min.css" rel="stylesheet" type="text/css" />
     <style>
-      .form-select{
-        border-color: #dfe9f1!important;
+      .form-select {
+        border-color: #dfe9f1 !important;
       }
-      .form-select:focus{
-        box-shadow: none!important;
-        border-color: #dfe9f1!important;
+      .form-select:focus {
+        box-shadow: none !important;
+        border-color: #dfe9f1 !important;
       }
-      input::placeholder{
-        color: #c6d2db!important;
+      input::placeholder {
+        color: #c6d2db !important;
       }
     </style>
   </head>
@@ -265,10 +265,35 @@
 
     <!-- footer year-->
     <script>
-      let year = new Date().getFullYear();
-      year = document.querySelector(
-        '#year'
-      ).textContent = `${year} © Ideas Kenya. Made with 💖 in Nairobi`;
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        'use strict';
+
+        //footer copyright
+        let year = new Date().getFullYear();
+        year = document.querySelector(
+          '#year'
+        ).textContent = `${year} © Ideas Kenya. Made with 💖 in Nairobi`;
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation');
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            'submit',
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add('was-validated');
+            },
+            false
+          );
+        });
+      })();
     </script>
   </body>
 </html>

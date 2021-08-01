@@ -1,39 +1,105 @@
-import os
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 
-from flask import Flask, render_template
+app = Flask(__name__)
+
+ENV = 'development'
+
+if ENV == 'development':
+    app.debug = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/ideaskenya'
+else:
+    app.debug = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-    )
+class Startups(db.Model):
+    __tablename__ = 'startup'
+    id = db.Column(db.Integer, primary_key=True)
+    startup_name = db.Column(db.String(200))
+    web_address = db.Column(db.String(200))
+    pitch = db.Column(db.String(200))
+    stage = db.Column(db.String(200))
+    founding_month = db.Column(db.String(200))
+    founding_year = db.Column(db.String(200))
+    incorporated = db.Column(db.String(200))
+    county = db.Column(db.String(200))
+    user_title = db.Column(db.String(200))
+    user_role = db.Column(db.String(200))
+    first_name = db.Column(db.String(200))
+    last_name = db.Column(db.String(200))
+    email = db.Column(db.String(200))
+    user_bio = db.Column(db.Text)
+    phone_number = db.Column(db.String(200))
+    linkedin_address = db.Column(db.String(200))
+    elevator_pitch = db.Column(db.Text)
+    reason_for_attendance = db.Column(db.Text)
 
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
+    def __init__(self, startup_name, web_address, pitch, stage, founding_month, founding_year, incorporated, county, user_title, user_role, first_name, last_name, email, user_bio, phone_number, linkedin_address, elevator_pitch, reason_for_attendance):
+        self.startup_name = startup_name
+        self.web_address = web_address
+        self.pitch = pitch
+        self.stage = stage
+        self.founding_month = founding_month
+        self.founding_year = founding_year
+        self.incorporated = incorporated
+        self.county = county
+        self.user_title = user_title
+        self.user_role = user_role
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.user_bio = user_bio
+        self.phone_number = phone_number
+        self.linkedin_address = linkedin_address
+        self.elevator_pitch = elevator_pitch
+        self.reason_for_attendance = reason_for_attendance
 
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
 
-    # a simple page that says hello
-    @app.route('/')
-    def index():
-        return render_template('index.html')
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-    @app.route('/startup')
-    def startup():
-        return render_template('startup.html')
 
-    from . import db
-    db.init_app(app)
+@app.route('/new')
+def new():
+    return render_template('startup.html')
 
-    return app
+
+@app.route('/startup', methods=['POST'])
+def startup():
+    if request.method == 'POST':
+        startup_name = request.form['startup_name']
+        web_address = request.form['web_address']
+        pitch = request.form['pitch']
+        stage = request.form.getlist('stage')
+        founding_month = request.form.getlist('founding_month')
+        founding_year = request.form.getlist('founding_year')
+        incorporated = request.form.getlist('incorporated')
+        county = request.form.getlist('county')
+        user_title = request.form['user_title']
+        user_role = request.form.getlist('user_role')
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        email = request.form['email']
+        user_bio = request.form['user_bio']
+        phone_number = request.form['phone_number']
+        linkedin_address = request.form['linkedin_address']
+        elevator_pitch = request.form['elevator_pitch']
+        reason_for_attendance = request.form['reason_for_attendance']
+
+        if db.session.query(Startups).filter(Startups.email == email).count() == 0:
+            data = Startups(startup_name, web_address, pitch, stage, founding_month, founding_year, incorporated, county, user_title, user_role, first_name, last_name, email, user_bio, phone_number, linkedin_address, elevator_pitch, reason_for_attendance)
+            
+            db.session.add(data)
+            db.session.commit()
+            return render_template('startup.html', message='Startup Submitted successfully', success=f'Thank you {first_name} {last_name}, we will get back to you in 24hrs.')
+
+        return render_template('startup.html', err='You have already submitted a startup for review')
+
+if __name__ == '__main__':
+    app.run()

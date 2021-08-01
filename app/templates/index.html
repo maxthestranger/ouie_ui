@@ -17,7 +17,7 @@
           Are you ready to accelerate your startup with Ideas Kenya?
         </p>
         <a
-          href="{{ url_for('startup') }}"
+          href="{{ url_for('new') }}"
           class="btn btn-primary rounded-pill me-2 mt-5"
           >Startup Application</a
         >
@@ -438,7 +438,7 @@
 
       <div class="col-lg-7">
         <div class="custom-form">
-          <form method="post" name="myForm" onsubmit="return validateForm()">
+          <form method="post" action="/startup" name="myForm">
             <p id="error-msg"></p>
             <div id="simple-msg"></div>
             <div class="row">

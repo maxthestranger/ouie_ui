@@ -32,18 +32,34 @@
     <div class="row justify-content-center mt-5 pt-2">
       <div class="col-lg-6">
         <div class="custom-form">
-          <form method="POST" name="myForm" action="/startup">
-            <p id="error-msg"></p>
-            <div id="simple-msg"></div>
+          <form
+            method="POST"
+            name="myForm"
+            action="/startup"
+            class="needs-validation"
+            novalidate
+          >
+            <p id="err-msg" class="text-danger">{{ err }}</p>
+            <div id="simple-msg">
+              <fieldset>
+                <div id="success_page">
+                  <h5 class="text-success">{{ message }}</h5>
+                  <p>{{ success }}</p>
+                </div>
+              </fieldset>
+            </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
-                  <label class="form-label text-muted">Startup Name</label>
+                  <label class="form-label text-muted" for="startup_name"
+                    >Startup Name <span class="text-danger">*</span></label
+                  >
                   <input
                     name="startup_name"
                     id="startup_name"
                     type="text"
                     class="form-control"
+                    required
                   />
                 </div>
               </div>
@@ -53,12 +69,13 @@
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted">Web address</label>
                   <input
-                    name="url"
-                    id="url"
+                    name="web_address"
+                    id="web_address"
                     type="url"
                     class="form-control"
                     placeholder="https://"
                   />
+                  <div class="valid-feedback">It's Optional</div>
                 </div>
               </div>
             </div>
@@ -66,7 +83,8 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Picth your startup in 140 characters</label
+                    >Picth your startup in not more than 140 characters
+                    <span class="text-danger">*</span></label
                   >
                   <textarea
                     name="pitch"
@@ -74,6 +92,7 @@
                     rows="5"
                     class="form-control"
                     maxlength="140"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -82,7 +101,8 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Stage of your startup</label
+                    >Stage of your startup
+                    <span class="text-danger">*</span></label
                   >
                   <div>
                     <div class="form-check form-check-inline">
@@ -92,6 +112,7 @@
                         name="stage"
                         id="idea"
                         value="idea"
+                        required
                       />
                       <label class="form-check-label text-muted" for="idea"
                         >Idea</label
@@ -143,22 +164,28 @@
               <div class="col-lg-6">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >When did you start</label
+                    >When did you start
+                    <span class="text-danger">*</span></label
                   >
-                  <select class="form-select" aria-label="Month select">
-                    <option selected disabled>Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
+                  <select
+                    class="form-select"
+                    aria-label="Month select"
+                    name="founding_month"
+                    required
+                  >
+                    <option selected disabled value="">Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
                   </select>
                 </div>
               </div>
@@ -167,28 +194,33 @@
                   <label class="form-label text-white"
                     >When did you start</label
                   >
-                  <select class="form-select" aria-label="Year select">
-                    <option selected disabled>Year</option>
-                    <option value="1">2021</option>
-                    <option value="2">2020</option>
-                    <option value="3">2019</option>
-                    <option value="4">2018</option>
-                    <option value="5">2017</option>
-                    <option value="6">2016</option>
-                    <option value="7">2015</option>
-                    <option value="8">2014</option>
-                    <option value="9">2013</option>
-                    <option value="10">2012</option>
-                    <option value="11">2011</option>
-                    <option value="12">2010</option>
-                    <option value="12">2009</option>
-                    <option value="12">2008</option>
-                    <option value="12">2007</option>
-                    <option value="12">2006</option>
-                    <option value="12">2005</option>
-                    <option value="12">2004</option>
-                    <option value="12">2003</option>
-                    <option value="12">2002</option>
+                  <select
+                    class="form-select"
+                    aria-label="Year select"
+                    name="founding_year"
+                    required
+                  >
+                    <option selected disabled value="">Year</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
                   </select>
                 </div>
               </div>
@@ -197,16 +229,18 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Are you incoporated?</label
+                    >Are you incoporated?
+                    <span class="text-danger">*</span></label
                   >
                   <div>
                     <div class="form-check form-check-inline">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="incoporated"
+                        name="incorporated"
                         id="yes"
                         value="yes"
+                        required
                       />
                       <label class="form-check-label text-muted" for="idea"
                         >Yes</label
@@ -216,7 +250,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="incoporated"
+                        name="incorporated"
                         id="no"
                         value="no"
                       />
@@ -231,29 +265,62 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
-                  <label class="form-label text-muted">County</label>
-                  <select class="form-select" aria-label="Year select">
-                    <option selected disabled>County</option>
-                    <option value="1">Nairobi</option>
-                    <option value="2">Mombasa</option>
-                    <option value="3">2019</option>
-                    <option value="4">2018</option>
-                    <option value="5">2017</option>
-                    <option value="6">2016</option>
-                    <option value="7">2015</option>
-                    <option value="8">2014</option>
-                    <option value="9">2013</option>
-                    <option value="10">2012</option>
-                    <option value="11">2011</option>
-                    <option value="12">2010</option>
-                    <option value="12">2009</option>
-                    <option value="12">2008</option>
-                    <option value="12">2007</option>
-                    <option value="12">2006</option>
-                    <option value="12">2005</option>
-                    <option value="12">2004</option>
-                    <option value="12">2003</option>
-                    <option value="12">2002</option>
+                  <label class="form-label text-muted"
+                    >County <span class="text-danger">*</span></label
+                  >
+                  <select
+                    class="form-select"
+                    aria-label="Year select"
+                    name="county"
+                    required
+                  >
+                    <option selected disabled value="">County</option>
+                    <option value="Mombasa">Mombasa</option>
+                    <option value="Kwale">Kwale</option>
+                    <option value="Kilifi">Kilifi</option>
+                    <option value="Tana River">Tana River</option>
+                    <option value="Lamu">Lamu</option>
+                    <option value="Taita/Taveta">Taita/Taveta</option>
+                    <option value="Garissa">Garissa</option>
+                    <option value="Wajir">Wajir</option>
+                    <option value="Mandera">Mandera</option>
+                    <option value="Marsabit">Marsabit</option>
+                    <option value="Isiolo">Isiolo</option>
+                    <option value="Meru">Meru</option>
+                    <option value="Tharaka-Nithi">Tharaka-Nithi</option>
+                    <option value="Embu">Embu</option>
+                    <option value="Kitui">Kitui</option>
+                    <option value="Machakos">Machakos</option>
+                    <option value="Makueni">Makueni</option>
+                    <option value="Nyandarua">Nyandarua</option>
+                    <option value="Nyeri">Nyeri</option>
+                    <option value="Kirinyaga">Kirinyaga</option>
+                    <option value="Murang'a">Murang'a</option>
+                    <option value="Kiambu">Kiambu</option>
+                    <option value="Turkana">Turkana</option>
+                    <option value="West Pokot">West Pokot</option>
+                    <option value="Samburu">Samburu</option>
+                    <option value="Trans Nzoia">Trans Nzoia</option>
+                    <option value="Uasin Gishu">Uasin Gishu</option>
+                    <option value="Elgeyo/Marakwet">Elgeyo/Marakwet</option>
+                    <option value="Baringo">Baringo</option>
+                    <option value="Laikipia">Laikipia</option>
+                    <option value="Nakuru">Nakuru</option>
+                    <option value="Narok">Narok</option>
+                    <option value="Kajiado">Kajiado</option>
+                    <option value="Kericho">Kericho</option>
+                    <option value="Bomet">Bomet</option>
+                    <option value="Kakamega">Kakamega</option>
+                    <option value="Vihiga">Vihiga</option>
+                    <option value="Bungoma">Bungoma</option>
+                    <option value="Busia">Busia</option>
+                    <option value="Siaya">Siaya</option>
+                    <option value="Kisumu">Kisumu</option>
+                    <option value="Homa Bay">Homa Bay</option>
+                    <option value="Migori">Migori</option>
+                    <option value="Kisii">Kisii</option>
+                    <option value="Nyamira">Nyamira</option>
+                    <option value="Nairobi City">Nairobi City</option>
                   </select>
                 </div>
               </div>
@@ -262,13 +329,15 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >What is your title at the startup</label
+                    >What is your title at the startup
+                    <span class="text-danger">*</span></label
                   >
                   <input
-                    name="title"
+                    name="user_title"
                     id="title"
                     type="text"
                     class="form-control"
+                    required
                   />
                 </div>
               </div>
@@ -277,16 +346,18 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >What is your role at the startup</label
+                    >What is your role at the startup
+                    <span class="text-danger">*</span></label
                   >
                   <div>
                     <div class="form-check form-check-inline">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="role"
+                        name="user_role"
                         id="co_founder"
                         value="co_founder"
+                        required
                       />
                       <label
                         class="form-check-label text-muted"
@@ -298,7 +369,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="role"
+                        name="user_role"
                         id="founder"
                         value="founder"
                       />
@@ -310,7 +381,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="role"
+                        name="user_role"
                         id="employee"
                         value="employee"
                       />
@@ -326,26 +397,28 @@
               <div class="col-lg-6">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >First Name</label
+                    >First Name <span class="text-danger">*</span></label
                   >
                   <input
-                    name="fname"
+                    name="first_name"
                     id="fname"
                     type="text"
                     class="form-control"
+                    required
                   />
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Last Name</label
+                    >Last Name <span class="text-danger">*</span></label
                   >
                   <input
-                    name="title"
+                    name="last_name"
                     id="lname"
                     type="lname"
                     class="form-control"
+                    required
                   />
                 </div>
               </div>
@@ -354,26 +427,30 @@
               <div class="col-lg-6">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Your contact email</label
+                    >Your contact email
+                    <span class="text-danger">*</span></label
                   >
                   <input
                     name="email"
                     id="email"
                     type="email"
                     class="form-control"
+                    required
                   />
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Your contact phone number</label
+                    >Your contact phone number
+                    <span class="text-danger">*</span></label
                   >
                   <input
-                    name="phone"
+                    name="phone_number"
                     id="phone"
                     type="tel"
                     class="form-control"
+                    required
                   />
                 </div>
               </div>
@@ -383,11 +460,12 @@
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted">Linkedin</label>
                   <input
-                    name="linkedin"
+                    name="linkedin_address"
                     id="linkedin"
                     type="url"
                     class="form-control"
                     placeholder="https://www.linkedin.com/in/yourusername/"
+                    required
                   />
                 </div>
               </div>
@@ -396,13 +474,16 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Short bio / Describe yourself</label
+                    >Short bio / Describe yourself
+                    <span class="text-danger">*</span></label
                   >
                   <textarea
-                    name="bio"
+                    name="user_bio"
                     id="bio"
                     rows="5"
+                    maxlength="140"
                     class="form-control"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -411,13 +492,16 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Startup Elevator Pitch</label
+                    >Startup Elevator Pitch
+                    <span class="text-danger">*</span></label
                   >
                   <textarea
-                    name="epitch"
+                    name="elevator_pitch"
                     id="epitch"
                     rows="5"
+                    maxlength="140"
                     class="form-control"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -426,13 +510,16 @@
               <div class="col-lg-12">
                 <div class="mb-2 mt-2">
                   <label class="form-label text-muted"
-                    >Why do you want to attend this program?</label
+                    >Why do you want to attend this program?
+                    <span class="text-danger">*</span></label
                   >
                   <textarea
-                    name="reason"
+                    name="reason_for_attendance"
                     id="reason"
                     rows="5"
+                    maxlength="140"
                     class="form-control"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -445,6 +532,7 @@
                   name="send"
                   class="submitBnt btn btn-primary"
                   value="Let's Go"
+                  required
                 />
               </div>
             </div>
