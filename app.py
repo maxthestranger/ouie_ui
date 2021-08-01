@@ -3,14 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-ENV = 'development'
+ENV = 'prod'
 
-if ENV == 'development':
+if ENV == 'dev':
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/ideaskenya'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://kxpdtdmmxauczq:16a4a4960e7763316d5f21f9e84aade9a89fee20665d7dda831ee17a90d893e4@ec2-34-230-115-172.compute-1.amazonaws.com:5432/d5pvlmg830f246'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
