@@ -10,7 +10,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/ideaskenya'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://kxpdtdmmxauczq:16a4a4960e7763316d5f21f9e84aade9a89fee20665d7dda831ee17a90d893e4@ec2-34-230-115-172.compute-1.amazonaws.com:5432/d5pvlmg830f246'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kxpdtdmmxauczq:16a4a4960e7763316d5f21f9e84aade9a89fee20665d7dda831ee17a90d893e4@ec2-34-230-115-172.compute-1.amazonaws.com:5432/d5pvlmg830f246'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
