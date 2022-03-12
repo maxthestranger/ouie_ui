@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "ouie",
+    "slug": "ouie",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
